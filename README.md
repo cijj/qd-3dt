@@ -74,3 +74,4 @@ Third-party datasets and tools are subject to their respective licenses.
 
 ## Acknowledgements
 We thank [Jiangmiao Pang](https://github.com/OceanPang) for his help in providing the [qdtrack](https://github.com/SysCV/qdtrack) codebase in [mmdetection](https://github.com/open-mmlab/mmdetection). This repo uses [py-motmetrics](https://github.com/cheind/py-motmetrics) for MOT evaluation, [waymo-open-dataset](https://github.com/waymo-research/waymo-open-dataset) for Waymo Open 3D detection and 3D tracking task, and [nuscenes-devkit](https://github.com/nutonomy/nuscenes-devkit) for nuScenes evaluation and preprocessing.
+# qd-3dt
