@@ -181,7 +181,7 @@ def evaluate(gt_datas: dict, pd_datas: dict, d_min: float, d_max: float,
         pbar.set_postfix_str(s=f"Logs: {log_id_gt} AccumFrames: {fr_count} | "
                              f"PD: {len(pd_data['frames'])} "
                              f"GT: {len(gt_data['frames'])}]")
-
+        # import pdb; pdb.set_trace()
         assert len(pd_data['frames']) == len(gt_data['frames'])
         assert log_id_pd == log_id_gt
 

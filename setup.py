@@ -145,7 +145,7 @@ if __name__ == '__main__':
         tests_require=['pytest'],
         install_requires=[
             'mmcv>=0.2.6', 'numpy', 'matplotlib', 'six', 'terminaltables',
-            'pycocotools', 'torch>=1.1', 'motmetrics', 'seaborn', 'sklearn', 'tensorflow-gpu==1.15.0'
+            'pycocotools', 'torch>=1.1', 'motmetrics', 'seaborn', 'sklearn', 'tensorflow-gpu==2.3.4'
         ],
         ext_modules=[
             make_cython_ext(

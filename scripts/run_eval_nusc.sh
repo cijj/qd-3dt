@@ -14,7 +14,7 @@ config=$(basename -s .py ${config_path})
 ./scripts/test_eval_exp.sh nuscenes ${config_path} ${gpu_ids} ${gpu_nums} ${PY_ARGS}
 
 # 3D Detection Evaluation
-python scripts/eval_nusc_det.py \
+python3 scripts/eval_nusc_det.py \
 --version=v1.0-trainval \
 --root=data/nuscenes/ \
 --work_dir=$work_dir \
@@ -23,7 +23,7 @@ python scripts/eval_nusc_det.py \
 # AMOTA@1
 export PYENV_VERSION=Nusc
 
-python scripts/eval_nusc_mot.py \
+python3 scripts/eval_nusc_mot.py \
 --version=v1.0-trainval \
 --root=data/nuscenes/ \
 --work_dir=$work_dir \
@@ -32,7 +32,7 @@ python scripts/eval_nusc_mot.py \
 # AMOTA@0.2
 export PYTHONPATH="${PYTHONPATH}:scripts/nuscenes-devkit/python-sdk"
 
-python scripts/eval_nusc_mot.py \
+python3 scripts/eval_nusc_mot.py \
 --version=v1.0-trainval \
 --root=data/nuscenes/ \
 --work_dir=$work_dir \

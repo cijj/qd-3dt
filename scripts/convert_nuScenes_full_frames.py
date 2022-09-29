@@ -246,15 +246,15 @@ def main():
         os.makedirs(out_dir, exist_ok=True)
 
     print("tracking mini")
-    anns = convert_track(data_dir, version='v1.0-mini')
+    anns = convert_track((data_dir + '/v1.0-mini'), version='v1.0-mini')
     dump_json(osp.join(out_dir, 'tracking_val_mini_full_frames.json'), anns)
 
     print("tracking trainval")
-    anns = convert_track(data_dir, version='v1.0-trainval')
+    anns = convert_track((data_dir + '/v1.0-trainval'), version='v1.0-trainval')
     dump_json(osp.join(out_dir, 'tracking_val_full_frames.json'), anns)
 
     print('tracking test')
-    anns = convert_track(data_dir, version='v1.0-test')
+    anns = convert_track((data_dir + '/v1.0-test'), version='v1.0-test')
     dump_json(osp.join(out_dir, 'tracking_test_full_frames.json'), anns)
 
 

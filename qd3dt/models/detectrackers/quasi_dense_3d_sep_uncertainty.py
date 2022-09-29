@@ -302,6 +302,7 @@ class QuasiDense3DSepUncertainty(BaseDetector, RPNTestMixin, BBoxTestMixin,
             ref_sampling_results.append(ref_sampling_result)
         # select pairs for training
         # key pos embeds
+        # bbox2roi: just add batxh_ind?
         if self.train_cfg.embed.with_key_pos:
             key_pos_rois = bbox2roi(
                 [res.pos_bboxes for res in key_sampling_results])
@@ -342,7 +343,6 @@ class QuasiDense3DSepUncertainty(BaseDetector, RPNTestMixin, BBoxTestMixin,
             key_neg_embeds, key_neg_depth = self.embed_head(key_neg_feats)
         else:
             key_neg_embeds, key_neg_depth = None, None
-
         # matching and cal loss
         matrix, cos_matrix = self.embed_head.match(
             key_embeds=key_embeds,

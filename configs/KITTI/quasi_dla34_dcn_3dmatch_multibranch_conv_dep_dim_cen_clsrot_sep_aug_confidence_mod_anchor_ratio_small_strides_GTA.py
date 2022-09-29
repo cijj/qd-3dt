@@ -234,7 +234,7 @@ test_cfg = dict(
     )# yapf:disable
 # dataset settings
 dataset_type = 'BDDVid3DDataset'
-data_root = 'data/KITTI/'
+data_root = 'data/kitti/'
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
 data = dict(
@@ -244,10 +244,12 @@ data = dict(
         type=dataset_type,
         ann_file=dict(
             DET=data_root + 'anns/detection_train.json',
-            VID=data_root + 'anns/tracking_train.json'),
+            VID=data_root + 'anns/tracking_train.json'
+            ),
         img_prefix=dict(
             DET=data_root + 'detection/training/image_2/',
-            VID=data_root + 'tracking/training/image_02/'),
+            VID=data_root + 'tracking/training/image_02/'
+            ),
         img_scale=(1485, 448),
         img_norm_cfg=img_norm_cfg,
         size_divisor=32,
@@ -302,7 +304,7 @@ data = dict(
 # optimizer
 optimizer = dict(
     type='SGD',
-    lr=0.005,
+    lr=0.000625,
     momentum=0.9,
     weight_decay=0.0001,
     paramwise_options=dict(bboxfc_lr_mult=10.0))
@@ -328,7 +330,7 @@ log_config = dict(
 total_epochs = 24
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
-load_from = 'work_dirs/GTA/quasi_dla34_dcn_3dmatch_multibranch_conv_cen_clsreg_sep_confidence_mod_anchor_ratio_strides/latest.pth'
+load_from = None
 resume_from = None
 workflow = [('train', 1)]
 evaluation = dict(type='video', interval=24)

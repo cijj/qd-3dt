@@ -72,3 +72,13 @@ def build_from_cfg(cfg, registry, default_args=None):
         for name, value in default_args.items():
             args.setdefault(name, value)
     return obj_type(**args)
+
+    '''
+    build_from_cfg(cfg, registry, default_args=None): cfg, registry명을 받아 해당 모듈 클래스를 내보냄
+    obj_type = args.pop('type') : 모델 타입 추출 ex)'QuasiDense3DSepUncertainty'
+    Registry : 각 모듈(backbne, head...)을 저장,관리
+    obj_type = registry.get(obj_type) : 타입 명에 해당하는 클래스 불러온다!
+    클래스(**딕셔너리) : 클래스의 __init__() 에 해당하는 것들을 한꺼번에 선언해 주는 느낌
+    '''
+
+    # 

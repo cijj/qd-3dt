@@ -219,6 +219,7 @@ def run_3d_tracking_evaluate(gt_path: str, out_json_path: str, res_folder: str,
     d_max_list = [100, 50, 30, 50, 100]
     gt_annos = read_file(gt_path, category)
     pd_annos = read_file(out_json_path, category)
+    # import pdb; pdb.set_trace()
     for d_min, d_max in zip(d_min_list, d_max_list):
         out_filename = osp.join(res_folder,
                                 f"{flag}_{d_min:04d}_{d_max:04d}.txt")
@@ -266,7 +267,7 @@ def single_gpu_test(model,
         with torch.no_grad():
             result, use_3d_center = model(
                 return_loss=False, rescale=True, pure_det=pure_det, **data)
-
+        # breakpoint()
         img_info = data['img_meta'][0].data[0][0]['img_info']
 
         if img_info.get(
@@ -320,6 +321,11 @@ def best_model_KITTI(args, out_path: str):
     cfg.test_cfg.track.tracker_model_name = 'LSTM3DTracker'
     out_path_exp = out_path.replace(
         'output', f'output_{data_split}_box3d_deep_depth_motion_lstm_3dcen')
+    
+    """
+    if args.add_test_set:
+        run_inference_and_evaluate(args, cfg, out_path_exp)
+    """
 
     if args.add_test_set:
         run_inference(cfg, args.checkpoint, out_path_exp, args.show_time)
@@ -327,7 +333,7 @@ def best_model_KITTI(args, out_path: str):
         cfg.data.test.ann_file = cfg.data.val.ann_file
         cfg.data.test.img_prefix = cfg.data.val.img_prefix
         run_inference_and_evaluate(args, cfg, out_path_exp)
-
+    
     if args.show:
         run_visualize(
             args.dataset_name,
@@ -377,7 +383,8 @@ def best_model_Nusc(args, out_path: str):
                 cfg.data.test.ann_file['VID'].split('.')[1]
             ])
         cfg.data.test.img_prefix = cfg.data.val.img_prefix
-        run_inference_and_evaluate(args, cfg, out_path_exp)
+        run_evaluate(args.dataset_name, cfg, out_path_exp)
+        # run_inference_and_evaluate(args, cfg, out_path_exp)
 
     if args.show:
         run_visualize(args.dataset_name, cfg, out_path_exp, cat_mapping[args.dataset_name])

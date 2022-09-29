@@ -239,7 +239,7 @@ data_root = 'data/nuscenes/'
 img_norm_cfg = dict(
     mean=[106.07, 127.705, 128.08], std=[73.458, 70.129, 70.463], to_rgb=True)
 data = dict(
-    imgs_per_gpu=4,
+    imgs_per_gpu=1,
     workers_per_gpu=1,
     train=dict(
         type=dataset_type,
@@ -323,7 +323,7 @@ log_config = dict(
 total_epochs = 24
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
-load_from = None
+load_from = 'https://download.pytorch.org/models/resnet101-5d3b4d8f.pth'
 resume_from = None
 workflow = [('train', 1)]
 evaluation = dict(type='video', interval=24)

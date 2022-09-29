@@ -317,8 +317,8 @@ def convert_det(data_dir, mode=None, adjust_center=True):
 
 def main():
 
-    data_dir = 'data/KITTI/'
-    out_dir = 'data/KITTI/anns'
+    data_dir = 'data/kitti/'
+    out_dir = 'data/kitti/anns'
 
     print('Convert KITTI Tracking dataset to COCO style.')
     if not osp.isfile(out_dir):
